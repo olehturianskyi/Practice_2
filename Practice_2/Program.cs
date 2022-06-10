@@ -82,7 +82,34 @@ namespace Practice_2
             car.Price = price;
             return car;
         }
-           
+        public void ShowCar()
+        {
+            Car car = new Car(numberModel, year, brand, price);
+            numberModel = car.NumberModel;
+            year = car.Year;
+            brand = car.Brand;
+            price = car.Price;
+            string _year = Convert.ToString(numberModel);
+            string _brand = brand;
+            string _price = Convert.ToString(price);
+            string _numberModel = Convert.ToString(numberModel);
+            Console.Clear();
+            
+            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine("| Number of model |    Brand    |  Year  | Price |");
+            Console.WriteLine("--------------------------------------------------");
+           Console.SetCursorPosition(12,6); 
+            Console.Write(_numberModel);
+            Console.Write("  ");
+            Console.SetCursorPosition(30, 6); 
+            Console.Write(_year);
+            Console.Write("  ");
+            Console.SetCursorPosition(50, 6); 
+            Console.Write(_brand);
+            Console.Write("  ");
+            Console.SetCursorPosition(70, 6); 
+            Console.Write(_price);            
+        }           
     }
     internal class Program
     {
@@ -95,24 +122,18 @@ namespace Practice_2
             Car car = new Car(numberModel, year, brand, price);
             car.CreateCar();             
             
-            List<Car> cars = new List<Car>();
-            cars.Add(car);
+            List<Car> cars = new List<Car>();           
             int choice = 0;
             while (choice != 3)
             {
                 choice = car.MenuCar();
                 Console.Clear();
                 if (choice == 1)
-                {
-                    Console.WriteLine("--------------------------------------------------");
-                    Console.WriteLine("| Number of model |    Brand    |  Year  | Price |");
-                    Console.WriteLine("--------------------------------------------------");
-                    Console.WriteLine(Convert.ToString(numberModel) + Convert.ToString(year) +Convert.ToString(brand) +Convert.ToString(price));
-                    
+                {                                        
                     for (int i = 0; i < cars.Count; i++)
                     {
                         Car _car = cars[i];
-                        Console.WriteLine(Convert.ToString(car));
+                        _car.ShowCar();                        
                     }
                     Console.WriteLine("Press ENTER");
                     Console.ReadKey();
